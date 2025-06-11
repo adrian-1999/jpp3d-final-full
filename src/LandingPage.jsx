@@ -1,52 +1,33 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "./firebase";
-import { signOut } from "firebase/auth";
 
 const LandingPage = () => {
   const navigate = useNavigate();
 
-    const handleLogout = () => {
-        signOut(auth)
-              .then(() => {
-                      navigate("/login");
-                            })
-                                  .catch((error) => {
-                                          console.error("Error al cerrar sesión:", error);
-                                                });
-                                                  };
+    return (
+        <div className="h-screen bg-cover bg-center flex flex-col items-center justify-center px-4" style={{ backgroundImage: "url('/fondo-landing.png')" }}>
+              <div className="bg-white bg-opacity-80 rounded-2xl p-8 shadow-xl text-center max-w-md w-full">
+                      <h1 className="text-3xl font-bold text-indigo-700 mb-4">Bienvenido a JPP3D</h1>
+                              <p className="text-gray-700 mb-6">
+                                        Tu idea al alcance. Diseñamos e imprimimos tus proyectos en 3D con precisión y creatividad.
+                                                </p>
+                                                        <div className="flex flex-col gap-4">
+                                                                  <button
+                                                                              onClick={() => navigate("/pedido")}
+                                                                                          className="bg-indigo-600 text-white py-2 px-4 rounded-xl shadow hover:bg-indigo-700 transition"
+                                                                                                    >
+                                                                                                                Realizar un Pedido
+                                                                                                                          </button>
+                                                                                                                                    <button
+                                                                                                                                                onClick={() => navigate("/historial")}
+                                                                                                                                                            className="bg-purple-600 text-white py-2 px-4 rounded-xl shadow hover:bg-purple-700 transition"
+                                                                                                                                                                      >
+                                                                                                                                                                                  Ver Historial
+                                                                                                                                                                                            </button>
+                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                          </div>
+                                                                                                                                                                                                              </div>
+                                                                                                                                                                                                                );
+                                                                                                                                                                                                                };
 
-                                                    return (
-                                                        <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-red-400 flex flex-col items-center justify-center text-white p-6">
-                                                              <h1 className="text-4xl font-bold mb-2">¡Bienvenido a JPP3D!</h1>
-                                                                    <p className="mb-6 text-lg text-center">
-                                                                            Tu idea al alcance: diseños e impresiones 3D personalizadas
-                                                                                  </p>
-
-                                                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-md">
-                                                                                                <button
-                                                                                                          className="bg-white text-purple-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-100 transition"
-                                                                                                                    onClick={() => navigate("/pedido")}
-                                                                                                                            >
-                                                                                                                                      Hacer Pedido
-                                                                                                                                              </button>
-
-                                                                                                                                                      <button
-                                                                                                                                                                className="bg-white text-purple-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-100 transition"
-                                                                                                                                                                          onClick={() => navigate("/historial")}
-                                                                                                                                                                                  >
-                                                                                                                                                                                            Ver Historial
-                                                                                                                                                                                                    </button>
-
-                                                                                                                                                                                                            <button
-                                                                                                                                                                                                                      className="col-span-1 sm:col-span-2 bg-white text-red-600 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-red-100 transition"
-                                                                                                                                                                                                                                onClick={handleLogout}
-                                                                                                                                                                                                                                        >
-                                                                                                                                                                                                                                                  Cerrar Sesión
-                                                                                                                                                                                                                                                          </button>
-                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                      );
-                                                                                                                                                                                                                                                                      };
-
-                                                                                                                                                                                                                                                                      export default LandingPage;
+                                                                                                                                                                                                                export default LandingPage;

@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Splash from "./Splash";
 import Navbar from "./Navbar";
-import Login from "./Login";
-import Register from "./Register";
-import Pedido from "./Pedido";
-import Historial from "./Historial";
-import Dashboard from "./Dashboard";
+import Footer from "./Footer";
+import Splash from "./Splash";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -17,22 +12,22 @@ function App() {
               }, []);
 
                 return (
-                    <Router>
+                    <>
                           {loading ? (
                                   <Splash />
                                         ) : (
-                                                <>
+                                                <div className="flex flex-col min-h-screen">
                                                           <Navbar />
-                                                                    <Routes>
-                                                                                <Route path="/login" element={<Login />} />
-                                                                                            <Route path="/register" element={<Register />} />
-                                                                                                        <Route path="/pedido" element={<Pedido />} />
-                                                                                                                    <Route path="/historial" element={<Historial />} />
-                                                                                                                                <Route path="/dashboard" element={<Dashboard />} />
-                                                                                                                                          </Routes>
-                                                                                                                                                  </>
+                                                                    <main className="flex-grow p-4 text-center">
+                                                                                <h1 className="text-3xl font-bold text-gray-800">¡Bienvenido a JPP3D!</h1>
+                                                                                            <p className="mt-4 text-gray-600">
+                                                                                                          Tu idea al alcance: Diseños e impresiones 3D personalizadas.
+                                                                                                                      </p>
+                                                                                                                                </main>
+                                                                                                                                          <Footer />
+                                                                                                                                                  </div>
                                                                                                                                                         )}
-                                                                                                                                                            </Router>
+                                                                                                                                                            </>
                                                                                                                                                               );
                                                                                                                                                               }
 
