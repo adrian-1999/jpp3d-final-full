@@ -1,34 +1,21 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
-import Splash from "./Splash";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "./LandingPage";
+import Login from "./Login";
+import Register from "./Register";
+import Dashboard from "./Dashboard";
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  return (
+      <Router>
+            <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                            <Route path="/login" element={<Login />} />
+                                    <Route path="/register" element={<Register />} />
+                                            <Route path="/dashboard" element={<Dashboard />} />
+                                                  </Routes>
+                                                      </Router>
+                                                        );
+                                                        }
 
-    useEffect(() => {
-        const timer = setTimeout(() => setLoading(false), 3000);
-            return () => clearTimeout(timer);
-              }, []);
-
-                return (
-                    <>
-                          {loading ? (
-                                  <Splash />
-                                        ) : (
-                                                <div className="flex flex-col min-h-screen">
-                                                          <Navbar />
-                                                                    <main className="flex-grow p-4 text-center">
-                                                                                <h1 className="text-3xl font-bold text-gray-800">¡Bienvenido a JPP3D!</h1>
-                                                                                            <p className="mt-4 text-gray-600">
-                                                                                                          Tu idea al alcance: Diseños e impresiones 3D personalizadas.
-                                                                                                                      </p>
-                                                                                                                                </main>
-                                                                                                                                          <Footer />
-                                                                                                                                                  </div>
-                                                                                                                                                        )}
-                                                                                                                                                            </>
-                                                                                                                                                              );
-                                                                                                                                                              }
-
-                                                                                                                                                              export default App;
+                                                        export default App;

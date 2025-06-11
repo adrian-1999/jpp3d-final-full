@@ -1,39 +1,10 @@
-import React, { useState } from 'react';
-import { auth } from './firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+// ✅ Register.jsx (completo y actualizado) import React, { useState } from "react"; import { createUserWithEmailAndPassword } from "firebase/auth"; import { auth } from "./firebase"; import { useNavigate } from "react-router-dom"; import "./Register.css";
 
-function Register() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+const Register = () => { const [email, setEmail] = useState(""); const [password, setPassword] = useState(""); const [error, setError] = useState(""); const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      alert('Usuario registrado correctamente');
-      navigate('/login');
-    } catch (err) {
-      setError(err.message);
-    }
-  };
+const handleRegister = async (e) => { e.preventDefault(); setError(""); try { await createUserWithEmailAndPassword(auth, email, password); navigate("/dashboard"); } catch (error) { setError("Error al crear la cuenta. Intenta con otro correo."); } };
 
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-black">
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-full max-w-sm space-y-4">
-        <h2 className="text-2xl font-semibold text-center">Registrarse</h2>
-
-        <input type="email" placeholder="Correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-2 border rounded" required />
-        <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full p-2 border rounded" required />
-        {error && <p className="text-red-600 text-sm">{error}</p>}
-
-        <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Crear cuenta</button>
-      </form>
-    </div>
-  );
-}
+return ( <div className="register-container"> <form onSubmit={handleRegister} className="register-form"> <h2>Crear Cuenta</h2> <input type="email" placeholder="Correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} required /> <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} required /> <button type="submit">Registrarse</button> {error && <p className="error">{error}</p>} <p onClick={() => navigate("/login")}>¿Ya tienes cuenta? Inicia sesión</p> </form> </div> ); };
 
 export default Register;
+
