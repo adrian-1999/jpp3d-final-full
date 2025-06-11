@@ -1,18 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Splash from "./Splash";
+import Login from "./Login";
+import Register from "./Register";
+import Pedido from "./Pedido";
+import Historial from "./Historial";
+import Dashboard from "./Dashboard";
+import LandingPage from "./LandingPage";
 
 function App() {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
-      <h1 className="text-4xl font-bold mb-4">Tu idea al alcance</h1>
-      <p className="mb-4">Pequeñas piezas para un gran futuro</p>
-      <nav className="space-x-4">
-        <Link to="/login" className="text-blue-400 hover:underline">Iniciar sesión</Link>
-        <Link to="/register" className="text-blue-400 hover:underline">Registrarse</Link>
-        <Link to="/pedido" className="text-blue-400 hover:underline">Hacer Pedido</Link>
-      </nav>
-    </div>
-  );
-}
+  const [loading, setLoading] = useState(true);
 
-export default App;
+    useEffect(() => {
+        const timer = setTimeout(() => setLoading(false), 3000);
+            return () => clearTimeout(timer);
+              }, []);
+
+                return (
+                    <Router>
+                          {loading ? (
+                                  <Splash />
+                                        ) : (
+                                                <Routes>
+                                                          <Route path="/" element={<LandingPage />} />
+                                                                    <Route path="/login" element={<Login />} />
+                                                                              <Route path="/register" element={<Register />} />
+                                                                                        <Route path="/pedido" element={<Pedido />} />
+                                                                                                  <Route path="/historial" element={<Historial />} />
+                                                                                                            <Route path="/dashboard" element={<Dashboard />} />
+                                                                                                                    </Routes>
+                                                                                                                          )}
+                                                                                                                              </Router>
+                                                                                                                                );
+                                                                                                                                }
+
+                                                                                                                                export default App;
