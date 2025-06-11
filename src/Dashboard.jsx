@@ -1,35 +1,46 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
+.dashboard-container {
+        height: 100vh;
+          background-image: url("/dashboard-bg.png"); /* Asegúrate de colocar esta imagen en /public */
+            background-size: cover;
+              background-position: center;
+                display: flex;
+                  justify-content: center;
+                    align-items: center;
+                    }
 
-const Dashboard = () => {
-  return (
-      <div className="min-h-screen bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100">
-            <Navbar />
+                    .overlay {
+                      background-color: rgba(0, 0, 0, 0.5);
+                        padding: 3rem;
+                          border-radius: 20px;
+                            text-align: center;
+                              color: white;
+                                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+                                }
 
-                  <div className="flex flex-col items-center justify-center py-20 text-center">
-                          <h1 className="text-4xl font-bold text-gray-800 mb-4">¡Bienvenido a tu Panel!</h1>
-                                  <p className="text-lg text-gray-600 mb-8">
-                                            Accede rápidamente a tus funciones principales:
-                                                    </p>
+                                .dashboard-title {
+                                  font-size: 2.5rem;
+                                    margin-bottom: 1rem;
+                                    }
 
-                                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                                                      <Link
-                                                                                  to="/pedido"
-                                                                                              className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-2xl shadow-xl transition duration-300"
-                                                                                                        >
-                                                                                                                    Hacer Pedido
-                                                                                                                              </Link>
-                                                                                                                                        <Link
-                                                                                                                                                    to="/historial"
-                                                                                                                                                                className="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-2xl shadow-xl transition duration-300"
-                                                                                                                                                                          >
-                                                                                                                                                                                      Ver Historial
-                                                                                                                                                                                                </Link>
-                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                              </div>
-                                                                                                                                                                                                                  </div>
-                                                                                                                                                                                                                    );
-                                                                                                                                                                                                                    };
+                                    .dashboard-subtitle {
+                                      font-size: 1.2rem;
+                                        margin-bottom: 2rem;
+                                        }
 
-                                                                                                                                                                                                                    export default Dashboard;
+                                        .dashboard-buttons button {
+                                          margin: 0 1rem;
+                                            padding: 0.75rem 1.5rem;
+                                              font-size: 1.1rem;
+                                                border: none;
+                                                  border-radius: 10px;
+                                                    cursor: pointer;
+                                                      background-color: #ff6b6b;
+                                                        color: white;
+                                                          transition: transform 0.3s ease;
+                                                          }
+
+                                                          .dashboard-buttons button:hover {
+                                                            transform: scale(1.1);
+                                                              background-color: #ff8787;
+                                                              }
+}
