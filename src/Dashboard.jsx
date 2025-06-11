@@ -1,38 +1,31 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
+  return (
+      <div className="min-h-screen bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100">
+            <Navbar />
 
-    const handleVerHistorial = () => {
-        navigate("/historial");
-          };
+                  <div className="flex flex-col items-center justify-center py-20 text-center">
+                          <h1 className="text-4xl font-bold text-gray-800 mb-4">¡Bienvenido a tu Panel!</h1>
+                                  <p className="text-lg text-gray-600 mb-8">
+                                            Accede rápidamente a tus funciones principales:
+                                                    </p>
 
-            const handleNuevoPedido = () => {
-                navigate("/pedido");
-                  };
-
-                    return (
-                        <div className="min-h-screen bg-gradient-to-br from-blue-100 to-purple-200 flex flex-col items-center">
-                              <Navbar />
-                                    <div className="text-center mt-20 p-4">
-                                            <h1 className="text-4xl font-bold text-gray-800 mb-2">Bienvenido a tu panel</h1>
-                                                    <p className="text-gray-600 text-lg">Selecciona una opción para comenzar</p>
-
-                                                            <div className="mt-10 flex flex-col gap-4 items-center">
-                                                                      <button
-                                                                                  onClick={handleVerHistorial}
-                                                                                              className="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-xl shadow-lg text-lg"
+                                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                                      <Link
+                                                                                  to="/pedido"
+                                                                                              className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-2xl shadow-xl transition duration-300"
                                                                                                         >
-                                                                                                                    Ver Historial de Pedidos
-                                                                                                                              </button>
-                                                                                                                                        <button
-                                                                                                                                                    onClick={handleNuevoPedido}
-                                                                                                                                                                className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl shadow-lg text-lg"
+                                                                                                                    Hacer Pedido
+                                                                                                                              </Link>
+                                                                                                                                        <Link
+                                                                                                                                                    to="/historial"
+                                                                                                                                                                className="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-2xl shadow-xl transition duration-300"
                                                                                                                                                                           >
-                                                                                                                                                                                      Hacer un nuevo pedido
-                                                                                                                                                                                                </button>
+                                                                                                                                                                                      Ver Historial
+                                                                                                                                                                                                </Link>
                                                                                                                                                                                                         </div>
                                                                                                                                                                                                               </div>
                                                                                                                                                                                                                   </div>
