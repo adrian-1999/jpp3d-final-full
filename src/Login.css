@@ -1,0 +1,49 @@
+/* Login.css */
+.login-container {
+  display: flex;
+    justify-content: center;
+      align-items: center;
+        min-height: 100vh;
+          background: linear-gradient(135deg, #1e3c72, #2a5298);
+          }
+
+          .login-form {
+            background: white;
+              padding: 2rem;
+                border-radius: 1rem;
+                  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+                    text-align: center;
+                      width: 90%;
+                        max-width: 400px;
+                        }
+
+                        .login-form h2 {
+                          margin-bottom: 1rem;
+                            color: #1e3c72;
+                            }
+
+                            .login-form input {
+                              width: 100%;
+                                padding: 0.75rem;
+                                  margin: 0.5rem 0;
+                                    border-radius: 0.5rem;
+                                      border: 1px solid #ccc;
+                                      }
+
+                                      .login-form button {
+                                        width: 100%;
+                                          padding: 0.75rem;
+                                            background: #1e3c72;
+                                              color: white;
+                                                border: none;
+                                                  border-radius: 0.5rem;
+                                                    margin-top: 1rem;
+                                                      cursor: pointer;
+                                                        font-weight: bold;
+                                                        }
+
+                                                        .login-form p {
+                                                          margin-top: 1rem;
+                                                            color: #1e3c72;
+                                                              cursor: pointer;
+                                                              }

@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Navbar";
 import Splash from "./Splash";
+=======
+// src/App.jsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "./LandingPage";
+>>>>>>> 314b3a9aa957754cea9e166f27f6d37d65f68aa7
 import Login from "./Login";
 import Register from "./Register";
 import Pedido from "./Pedido";
 import Historial from "./Historial";
+<<<<<<< HEAD
+=======
+import Dashboard from "./Dashboard";
+>>>>>>> 314b3a9aa957754cea9e166f27f6d37d65f68aa7
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -20,6 +31,7 @@ function App() {
   }
 
   return (
+<<<<<<< HEAD
     <Router>
       <Navbar />
       <Routes>
@@ -40,5 +52,19 @@ function App() {
     </Router>
   );
 }
+=======
+      <Router>
+            <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                            <Route path="/login" element={<Login />} />
+                                    <Route path="/register" element={<Register />} />
+                                            <Route path="/pedido" element={<Pedido />} />
+                                                    <Route path="/historial" element={<Historial />} />
+                                                            <Route path="/dashboard" element={<Dashboard />} />
+                                                                  </Routes>
+                                                                      </Router>
+                                                                        );
+                                                                        }
+>>>>>>> 314b3a9aa957754cea9e166f27f6d37d65f68aa7
 
-export default App;
+                                                                        export default App;

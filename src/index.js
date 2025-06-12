@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -24,3 +25,12 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
+=======
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+>>>>>>> 314b3a9aa957754cea9e166f27f6d37d65f68aa7

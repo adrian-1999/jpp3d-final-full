@@ -1,0 +1,46 @@
+.dashboard-container {
+        height: 100vh;
+          background-image: url("/dashboard-bg.png"); /* Asegúrate de colocar esta imagen en /public */
+            background-size: cover;
+              background-position: center;
+                display: flex;
+                  justify-content: center;
+                    align-items: center;
+                    }
+
+                    .overlay {
+                      background-color: rgba(0, 0, 0, 0.5);
+                        padding: 3rem;
+                          border-radius: 20px;
+                            text-align: center;
+                              color: white;
+                                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+                                }
+
+                                .dashboard-title {
+                                  font-size: 2.5rem;
+                                    margin-bottom: 1rem;
+                                    }
+
+                                    .dashboard-subtitle {
+                                      font-size: 1.2rem;
+                                        margin-bottom: 2rem;
+                                        }
+
+                                        .dashboard-buttons button {
+                                          margin: 0 1rem;
+                                            padding: 0.75rem 1.5rem;
+                                              font-size: 1.1rem;
+                                                border: none;
+                                                  border-radius: 10px;
+                                                    cursor: pointer;
+                                                      background-color: #ff6b6b;
+                                                        color: white;
+                                                          transition: transform 0.3s ease;
+                                                          }
+
+                                                          .dashboard-buttons button:hover {
+                                                            transform: scale(1.1);
+                                                              background-color: #ff8787;
+                                                              }
+}
