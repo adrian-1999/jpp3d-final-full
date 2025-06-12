@@ -1,17 +1,43 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import Splash from "./Splash";
+import Login from "./Login";
+import Register from "./Register";
+import Pedido from "./Pedido";
+import Historial from "./Historial";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Splash />;
+  }
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
-      <h1 className="text-4xl font-bold mb-4">Tu idea al alcance</h1>
-      <p className="mb-4">Pequeñas piezas para un gran futuro</p>
-      <nav className="space-x-4">
-        <Link to="/login" className="text-blue-400 hover:underline">Iniciar sesión</Link>
-        <Link to="/register" className="text-blue-400 hover:underline">Registrarse</Link>
-        <Link to="/pedido" className="text-blue-400 hover:underline">Hacer Pedido</Link>
-      </nav>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={
+          <main className="p-4 text-center">
+            <h1 className="text-3xl font-bold text-gray-800">¡Bienvenido a JPP3D!</h1>
+            <p className="mt-4 text-gray-600">
+              Tu idea al alcance: Diseños e impresiones 3D personalizadas.
+            </p>
+          </main>
+        } />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/pedido" element={<Pedido />} />
+        <Route path="/historial" element={<Historial />} />
+        <Route path="/" element={<Splash />} />
+      </Routes>
+    </Router>
   );
 }
 

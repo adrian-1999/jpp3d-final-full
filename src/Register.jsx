@@ -1,39 +1,82 @@
-import React, { useState } from 'react';
-import { auth } from './firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebase";
 
-function Register() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+const Register = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
+    if (!email || !password) {
+      setError("Por favor llena todos los campos.");
+      return;
+    }
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      alert('Usuario registrado correctamente');
-      navigate('/login');
+      navigate("/pedido"); // Redirige al formulario luego de registrarse
     } catch (err) {
-      setError(err.message);
+      setError("Error al crear la cuenta. Intenta con otro correo.");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-black">
-      <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-full max-w-sm space-y-4">
-        <h2 className="text-2xl font-semibold text-center">Registrarse</h2>
-
-        <input type="email" placeholder="Correo electrónico" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-2 border rounded" required />
-        <input type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full p-2 border rounded" required />
-        {error && <p className="text-red-600 text-sm">{error}</p>}
-
-        <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Crear cuenta</button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-500 to-yellow-500">
+      <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
+          Crear una Cuenta
+        </h2>
+        <form onSubmit={handleRegister} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Correo Electrónico
+            </label>
+            <input
+              type="email"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="correo@ejemplo.com"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Contraseña
+            </label>
+            <input
+              type="password"
+              className="mt-1 w-full p-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+            />
+          </div>
+          {error && (
+            <p className="text-red-500 text-sm text-center">{error}</p>
+          )}
+          <button
+            type="submit"
+            className="w-full bg-pink-600 text-white py-2 rounded-xl hover:bg-pink-700 transition"
+          >
+            Registrarse
+          </button>
+        </form>
+        <p className="text-sm text-center mt-4 text-gray-600">
+          ¿Ya tienes una cuenta?{" "}
+          <span
+            className="text-pink-600 hover:underline cursor-pointer"
+            onClick={() => navigate("/login")}
+          >
+            Iniciar Sesión
+          </span>
+        </p>
+      </div>
     </div>
   );
-}
+};
 
 export default Register;
