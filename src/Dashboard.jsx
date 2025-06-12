@@ -1,46 +1,20 @@
-.dashboard-container {
-        height: 100vh;
-          background-image: url("/dashboard-bg.png"); /* Asegúrate de colocar esta imagen en /public */
-            background-size: cover;
-              background-position: center;
-                display: flex;
-                  justify-content: center;
-                    align-items: center;
-                    }
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Dashboard.css";
 
-                    .overlay {
-                      background-color: rgba(0, 0, 0, 0.5);
-                        padding: 3rem;
-                          border-radius: 20px;
-                            text-align: center;
-                              color: white;
-                                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-                                }
-
-                                .dashboard-title {
-                                  font-size: 2.5rem;
-                                    margin-bottom: 1rem;
-                                    }
-
-                                    .dashboard-subtitle {
-                                      font-size: 1.2rem;
-                                        margin-bottom: 2rem;
-                                        }
-
-                                        .dashboard-buttons button {
-                                          margin: 0 1rem;
-                                            padding: 0.75rem 1.5rem;
-                                              font-size: 1.1rem;
-                                                border: none;
-                                                  border-radius: 10px;
-                                                    cursor: pointer;
-                                                      background-color: #ff6b6b;
-                                                        color: white;
-                                                          transition: transform 0.3s ease;
-                                                          }
-
-                                                          .dashboard-buttons button:hover {
-                                                            transform: scale(1.1);
-                                                              background-color: #ff8787;
-                                                              }
+function Dashboard() {
+  return (
+    <div className="dashboard-container">
+      <h1 className="dashboard-title">Bienvenido al Panel de Control de JPP3D</h1>
+      <p className="dashboard-description">
+        Elige una opción para comenzar:
+      </p>
+      <div className="dashboard-buttons">
+        <Link to="/pedido" className="dashboard-btn">Hacer Pedido</Link>
+        <Link to="/historial" className="dashboard-btn">Ver Historial</Link>
+      </div>
+    </div>
+  );
 }
+
+export default Dashboard;
