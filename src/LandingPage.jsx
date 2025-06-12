@@ -1,32 +1,34 @@
+// src/LandingPage.jsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "./LandingPage.css";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const LandingPage = () => {
-  return (
-      <div className="min-h-screen bg-gray-900 text-white flex flex-col justify-center items-center">
-            <img
-                    src="/landing-banner.png"
-                            alt="Banner JPP3D"
-                                    className="w-full max-w-4xl mb-8 rounded-lg shadow-xl"
-                                          />
-                                                <h1 className="text-4xl font-bold mb-4">Bienvenido a JPP3D</h1>
-                                                      <p className="text-lg text-center max-w-xl mb-6">
-                                                              Tu idea al alcance: Diseños e impresiones 3D personalizadas con calidad y estilo.
-                                                                    </p>
-                                                                          <div className="flex space-x-4">
-                                                                                  <Link to="/login">
-                                                                                            <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded-lg">
-                                                                                                        Iniciar sesión
-                                                                                                                  </button>
-                                                                                                                          </Link>
-                                                                                                                                  <Link to="/register">
-                                                                                                                                            <button className="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-2 rounded-lg">
-                                                                                                                                                        Registrarse
-                                                                                                                                                                  </button>
-                                                                                                                                                                          </Link>
-                                                                                                                                                                                </div>
-                                                                                                                                                                                    </div>
-                                                                                                                                                                                      );
-                                                                                                                                                                                      };
+  const navigate = useNavigate();
 
-                                                                                                                                                                                      export default LandingPage;
+    return (
+        <div className="landing-container">
+              <Navbar />
+                    <div className="landing-content">
+                            <img
+                                      src="/landing.jpg"
+                                                alt="Diseño 3D"
+                                                          className="landing-image"
+                                                                  />
+                                                                          <div className="landing-text">
+                                                                                    <h1>Bienvenido a JPP3D</h1>
+                                                                                              <p>¡Haz realidad tus ideas con impresión 3D profesional!</p>
+                                                                                                        <div className="landing-buttons">
+                                                                                                                    <button onClick={() => navigate("/login")}>Iniciar sesión</button>
+                                                                                                                                <button onClick={() => navigate("/register")}>Registrarse</button>
+                                                                                                                                          </div>
+                                                                                                                                                  </div>
+                                                                                                                                                        </div>
+                                                                                                                                                              <Footer />
+                                                                                                                                                                  </div>
+                                                                                                                                                                    );
+                                                                                                                                                                    };
+
+                                                                                                                                                                    export default LandingPage;
